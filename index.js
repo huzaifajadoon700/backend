@@ -19,7 +19,13 @@ mongoose.connect(url , {useNewUrlParser: true , useUnifiedTopology: true } )
 .catch(()=>console.log("not connected"));
 
 
-app.use(cors());
+app.use(cors(
+  {
+    origin :["https://deploy.mern.1whq.vercel.app"],
+             methods: ["POST", "GET"],
+    credentials: true
+  }
+));
 app.use(bodyParser.json( { extends:true } ) );
 app.use(bodyParser.urlencoded({extends:true }));
 app.use("/shoes",shoes);
